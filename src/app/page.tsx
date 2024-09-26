@@ -1,60 +1,61 @@
-import CopyCode from "@/components/copy-code";
 import Navbar from "@/components/navbar";
-import { GridBackground } from "@/components/ui/backgrounds/grid";
-import { Button, Code } from "@nextui-org/react";
-import { IconGitFork } from "@tabler/icons-react";
-import Link from "next/link";
+import { Cover } from "@/components/ui/cover";
+import ShinyButton from "@/components/ui/shiny-button";
+import { IconChevronRight, IconGitFork } from "@tabler/icons-react";
 
 export default function Home() {
   return (
     <>
       <Navbar />
-      <GridBackground className="min-h-screen">
-        <div className="w-full p-10 pt-24 md:pt-36 lg:pt-48 flex flex-col items-center gap-5 z-50">
-          <CopyCode code="git clone https://github.com/kais-radwan/start-kit" />
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold">
-            Next.js Startkit
-          </h1>
-          <p className="text-sm md:text-base opacity-80 w-[98%] md:w-[80%] lg:w-[60%] text-center">
-            Kickstart your Next.js project with a{" "}
-            <Code
-              color="success"
-              style={{
-                boxShadow: "0px 0px 130px 0px #4ade80",
-              }}
-              className="border border-green-400 backdrop-blur"
-            >
-              git clone
-            </Code>
-            <br />
-            <br /> Typescript, Tailwindcss, Shadcn, NextUI, Sonner toast
-            notifications, dark & light modes, Framer motion, and background
-            patterns.
-          </p>
-
-          <Button
-            color="primary"
-            className="backdrop-blur shadow-xl font-semibold"
-            as={Link}
-            href="https://github.com/kais-radwan/start-kit/fork"
-            target="_blank"
-            startContent={<IconGitFork size={20} />}
+      <div className="w-full flex flex-col items-center pt-36 text-center gap-6">
+        <div
+          className="p-1 px-4 border rounded-full text-sm bg-accent/10 flex items-center gap-2 relative overflow-hidden border-white/10"
+          style={{
+            boxShadow: "0px 0px 140px 0px rgba(255, 255, 255, .1)",
+          }}
+        >
+          <div
+            className="p-1 px-2 border rounded-full text-xs bg-accent/10 text-blue-300 border-blue-300/30 relative flex items-center justify-center overflow-hidden"
+            style={{
+              // boxShadow: "0px 20px 100px 0px #60a5fa",
+            }}
           >
-            Fork on Github
-          </Button>
-
-          <div className="text-sm mt-14">
-            Built with love by{" "}
-            <Link
-              href="https://x.com/kais_rad"
-              target="_blank"
-              className="underline"
-            >
-              @kais_rad
-            </Link>
-          </div>
+            <div className="h-[1px] w-4 bg-blue-400 absolute top-0"></div>
+            <div className="h-[1px] w-4 bg-blue-400 absolute top-0 blur-sm"></div>
+            <div className="h-[1px] w-4 bg-blue-400 absolute top-0 blur-sm"></div>
+            <div className="h-[1px] w-4 bg-blue-400 absolute top-0 blur-sm"></div>
+            <div className="h-[1px] w-4 bg-blue-400 absolute top-0 blur-md"></div>
+            <div className="h-[1px] w-4 bg-blue-400 absolute top-0 blur-md"></div>
+            <div className="h-[1px] w-4 bg-blue-400 absolute top-0 blur-lg"></div>
+            <div className="h-2 w-4 bg-blue-400 absolute top-0 blur-lg"></div>
+            limited offer
+          </div>{" "}
+          clone this template for free
+          <IconChevronRight size={15} />
         </div>
-      </GridBackground>
+        <h1
+          className="text-6xl"
+          style={{
+            textShadow: "0px 0px 10px rgba(255, 255, 255, .4)",
+          }}
+        >
+          <span className="opacity-80">Ship Your</span>{" "}
+          <Cover className="">Waitlist</Cover>
+          <br />
+          <span className="opacity-80">In Minutes</span>
+        </h1>
+        <div className="opacity-80 max-w-lg">
+          Give your idea the waitlist it deserves, and {"don't"} let bad ones
+          affect how you validate your ideas
+        </div>
+        <div className="max-w-md flex items-center gap-3 text-sm outline-none bg-accent/10 border rounded-full p-2 px-4">
+          <input
+            className="outline-none bg-transparent max-w-48"
+            placeholder="Enter your email..."
+          />
+          <ShinyButton>Join waitlist</ShinyButton>
+        </div>
+      </div>
     </>
   );
 }
