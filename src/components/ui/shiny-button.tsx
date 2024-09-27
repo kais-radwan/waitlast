@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import { motion, type AnimationProps } from "framer-motion";
 
 import { cn } from "@/lib/utils";
+import { IconLoader2 } from "@tabler/icons-react";
 
 const animationProps = {
   initial: { "--x": "100%", scale: 0.8 },
@@ -25,11 +26,15 @@ const animationProps = {
     },
   },
 } as AnimationProps;
+
 interface ShinyButtonProps {
   children: React.ReactNode;
   className?: string;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+  loading?: boolean;
 }
-const ShinyButton = ({ children, className, ...props }: ShinyButtonProps) => {
+
+const ShinyButton = ({ children, className, loading, ...props }: ShinyButtonProps) => {
   return (
     <motion.button
       {...animationProps}
@@ -37,6 +42,7 @@ const ShinyButton = ({ children, className, ...props }: ShinyButtonProps) => {
       className={cn(
         "relative rounded-full px-6 py-2 font-medium backdrop-blur-xl transition-shadow duration-300 ease-in-out hover:shadow dark:bg-[radial-gradient(circle_at_50%_0%,hsl(var(--primary)/10%)_0%,transparent_60%)] dark:hover:shadow-[0_0_20px_hsl(var(--primary)/10%)]",
         className,
+        loading && "pointer-events-none cursor-not-allowed opacity-50"
       )}
     >
       <span
@@ -46,7 +52,10 @@ const ShinyButton = ({ children, className, ...props }: ShinyButtonProps) => {
             "linear-gradient(-75deg,hsl(var(--primary)) calc(var(--x) + 20%),transparent calc(var(--x) + 30%),hsl(var(--primary)) calc(var(--x) + 100%))",
         }}
       >
-        {children}
+        <div className="flex items-center gap-2">
+          {loading && <IconLoader2 size={15} className="animate-spin" />}
+          {children}
+        </div>
       </span>
       <span
         style={{
