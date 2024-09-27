@@ -134,6 +134,9 @@ export const Cover = ({
           "dark:text-white inline-block text-neutral-900 relative z-20 group-hover/cover:text-white transition duration-200",
           className
         )}
+        style={{
+          textShadow: "0px 0px 10px rgba(255, 255, 255, .4)",
+        }}
       >
         {children}
       </motion.span>
